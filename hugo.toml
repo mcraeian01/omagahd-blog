@@ -2,3 +2,13 @@ baseURL = 'https://main.d2v3tbwq0flai9.amplifyapp.com/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "PaperMod"
+
+[[menus.main]]
+  name = "Dashboard"
+  url = "/dashboard/"
+  weight = 10
+
+[[menus.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 20

@@ -1,0 +1,101 @@
+{{ define "main" }}
+<article>
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+  <div class="post-content">
+
+    {{/* ── Project Progress ── */}}
+    <section class="dashboard-section">
+      <h2 class="dashboard-heading">Project Progress</h2>
+      <div class="dashboard-grid">
+        {{ range .Site.Data.dashboard.projects }}
+        {{ $total := len .milestones }}
+        {{ $done := 0 }}
+        {{ range .milestones }}{{ if .done }}{{ $done = add $done 1 }}{{ end }}{{ end }}
+        {{ $pct := 0 }}
+        {{ if gt $total 0 }}{{ $pct = div (mul $done 100) $total }}{{ end }}
+        <div class="dashboard-card">
+          <h3 class="dashboard-card-title">{{ .name }}</h3>
+          <p class="dashboard-card-desc">{{ .description }}</p>
+          <div class="dashboard-progress-wrap">
+            <div class="dashboard-progress-bar" data-pct="{{ $pct }}" style="width: {{ $pct }}%"></div>
+          </div>
+          <span class="dashboard-progress-label">{{ $done }}/{{ $total }} milestones ({{ $pct }}%)</span>
+          <ul class="dashboard-milestones">
+            {{ range .milestones }}
+            <li class="{{ if .done }}dashboard-done{{ else }}dashboard-todo{{ end }}">
+              <span class="dashboard-check">{{ if .done }}&#10003;{{ else }}&#9675;{{ end }}</span>
+              {{ .title }}
+            </li>
+            {{ end }}
+          </ul>
+          {{ if .repo }}
+          <a class="dashboard-repo-link" href="https://github.com/{{ $.Site.Data.dashboard.github_username }}/{{ .repo }}" target="_blank" rel="noopener">
+            View on GitHub &rarr;
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </section>
+
+    {{/* ── Learning Goals ── */}}
+    <section class="dashboard-section">
+      <h2 class="dashboard-heading">Learning Goals</h2>
+      <div class="dashboard-goals">
+        {{ range .Site.Data.dashboard.learning_goals }}
+        <div class="dashboard-goal">
+          <div class="dashboard-goal-header">
+            <span class="dashboard-goal-name">{{ .name }}</span>
+            <span class="dashboard-goal-pct">{{ .percent }}%</span>
+          </div>
+          <div class="dashboard-progress-wrap">
+            <div class="dashboard-progress-bar" data-pct="{{ .percent }}" style="width: {{ .percent }}%"></div>
+          </div>
+          {{ if .note }}
+          <p class="dashboard-goal-note">{{ .note }}</p>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </section>
+
+    {{/* ── GitHub Activity ── */}}
+    <section class="dashboard-section">
+      <h2 class="dashboard-heading">GitHub Activity</h2>
+      <div class="dashboard-github" data-username="{{ .Site.Data.dashboard.github_username }}">
+        <div class="dashboard-grid dashboard-grid-2">
+          <div class="dashboard-card">
+            <h3 class="dashboard-card-title">Languages</h3>
+            <div class="dashboard-chart-wrap">
+              <canvas id="dashboard-lang-chart"></canvas>
+              <p class="dashboard-loading" id="lang-loading">Loading language data...</p>
+              <p class="dashboard-error" id="lang-error" hidden>Could not load language data.</p>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <h3 class="dashboard-card-title">Weekly Activity</h3>
+            <div class="dashboard-chart-wrap">
+              <canvas id="dashboard-activity-chart"></canvas>
+              <p class="dashboard-loading" id="activity-loading">Loading activity data...</p>
+              <p class="dashboard-error" id="activity-error" hidden>Could not load activity data.</p>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-card dashboard-commits-card">
+          <h3 class="dashboard-card-title">Recent Commits</h3>
+          <ul class="dashboard-commits" id="dashboard-commits">
+            <li class="dashboard-loading" id="commits-loading">Loading recent commits...</li>
+          </ul>
+          <p class="dashboard-error" id="commits-error" hidden>Could not load recent commits.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="/js/dashboard.js"></script>
+{{ end }}

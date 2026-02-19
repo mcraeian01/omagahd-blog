@@ -1,0 +1,239 @@
+/* ── Dashboard Layout ── */
+.dashboard-section {
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-heading {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--border);
+}
+
+/* ── Grid ── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Cards ── */
+.dashboard-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.dashboard-card-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem;
+}
+
+.dashboard-card-desc {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin: 0 0 0.8rem;
+  line-height: 1.4;
+}
+
+/* ── Progress Bars ── */
+.dashboard-progress-wrap {
+  background: var(--border);
+  border-radius: 4px;
+  height: 10px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* Color coding by percentage — applied via JS */
+.dashboard-progress-red {
+  background: #e74c3c;
+}
+
+.dashboard-progress-yellow {
+  background: #f39c12;
+}
+
+.dashboard-progress-green {
+  background: #27ae60;
+}
+
+.dashboard-progress-label {
+  font-size: 0.78rem;
+  color: var(--secondary);
+}
+
+/* ── Milestones ── */
+.dashboard-milestones {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0 0.6rem;
+}
+
+.dashboard-milestones li {
+  font-size: 0.85rem;
+  padding: 0.2rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.dashboard-check {
+  flex-shrink: 0;
+  width: 1.2em;
+  text-align: center;
+}
+
+.dashboard-done {
+  color: var(--primary);
+}
+
+.dashboard-todo {
+  color: var(--secondary);
+}
+
+/* ── Repo Link ── */
+.dashboard-repo-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--primary);
+}
+
+.dashboard-repo-link:hover {
+  border-bottom-style: solid;
+}
+
+/* ── Learning Goals ── */
+.dashboard-goals {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dashboard-goal {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+}
+
+.dashboard-goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.dashboard-goal-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.dashboard-goal-pct {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.dashboard-goal-note {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin: 0.3rem 0 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ── GitHub Activity ── */
+.dashboard-chart-wrap {
+  position: relative;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-chart-wrap canvas {
+  max-height: 220px;
+}
+
+.dashboard-loading {
+  font-size: 0.82rem;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.dashboard-error {
+  font-size: 0.82rem;
+  color: #e74c3c;
+  font-style: italic;
+}
+
+/* ── Recent Commits ── */
+.dashboard-commits-card {
+  margin-top: 1rem;
+}
+
+.dashboard-commits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-commits li {
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+
+.dashboard-commits li:last-child {
+  border-bottom: none;
+}
+
+.dashboard-commit-sha {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: var(--primary);
+  text-decoration: none;
+  margin-right: 0.4rem;
+}
+
+.dashboard-commit-sha:hover {
+  text-decoration: underline;
+}
+
+.dashboard-commit-repo {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  margin-left: 0.3rem;
+}
+
+.dashboard-commit-msg {
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.dashboard-commit-time {
+  font-size: 0.72rem;
+  color: var(--secondary);
+}

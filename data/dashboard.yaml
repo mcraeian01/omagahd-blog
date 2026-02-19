@@ -1,0 +1,76 @@
+github_username: mcraeian01
+
+projects:
+  - name: "Homelab Infrastructure"
+    description: "Docker Compose service definitions for self-hosted apps — Calibre, Homepage dashboard, and more."
+    repo: "homelab-infra"
+    milestones:
+      - title: "Initial Docker Compose setup"
+        done: true
+      - title: "Calibre e-book server running"
+        done: true
+      - title: "Calibre-Web frontend running"
+        done: true
+      - title: "Homepage dashboard deployed"
+        done: true
+      - title: "Reverse proxy with HTTPS"
+        done: false
+      - title: "Automated backups"
+        done: false
+      - title: "Monitoring & alerting"
+        done: false
+
+  - name: "My Scripts"
+    description: "Bash scripts for Docker management — lab-start/lab-stop utilities and shell aliases."
+    repo: "my-scripts"
+    milestones:
+      - title: "lab-start / lab-stop scripts"
+        done: true
+      - title: "Shell aliases (up/down)"
+        done: true
+      - title: "Health check script"
+        done: false
+      - title: "Log rotation script"
+        done: false
+
+  - name: "Blog"
+    description: "Hugo + PaperMod blog deployed on AWS Amplify — technical writing and learning journal."
+    repo: "omagahd-blog"
+    milestones:
+      - title: "Hugo site scaffolded"
+        done: true
+      - title: "PaperMod theme configured"
+        done: true
+      - title: "First blog post published"
+        done: true
+      - title: "Coding progress dashboard"
+        done: false
+      - title: "Custom domain setup"
+        done: false
+      - title: "RSS feed & SEO"
+        done: false
+
+learning_goals:
+  - name: "Docker & Containers"
+    percent: 45
+    note: "Compose fundamentals solid; working on networking and volumes"
+
+  - name: "Linux & CLI"
+    percent: 55
+    note: "Comfortable with Arch, pacman, systemd; learning shell scripting patterns"
+
+  - name: "Networking"
+    percent: 20
+    note: "DNS, ports, and firewall basics; reverse proxy next"
+
+  - name: "Cloud / AWS"
+    percent: 35
+    note: "Amplify deployment working; exploring IAM and S3"
+
+  - name: "AI / ML"
+    percent: 25
+    note: "Using Claude Code daily; learning prompt engineering and API integration"
+
+  - name: "Coding"
+    percent: 30
+    note: "Bash scripting, Hugo templating; starting JavaScript fundamentals"
